@@ -66,7 +66,7 @@ final class NetworkService {
         let loginData = loginString.data(using: String.Encoding.utf8)!
         let base64LoginString = loginData.base64EncodedString()
         request.setValue("Basic \(base64LoginString)", forHTTPHeaderField: "Authorization")
-        request.httpBody = setAuthFields(login: "test_user", password: "123456aB")
+        request.httpBody = setAuthFields(login: login, password: password)
         URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {
                 completion(.failure(error ?? NetworkServiceError.failedData))
