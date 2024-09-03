@@ -290,7 +290,7 @@ final class DashboardViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(named: "primaryColor")
+        view.backgroundColor = UIColor(named: "backgroundColor")
         navigationItem.hidesBackButton = true;
         fetchData()
         addSubviews()

@@ -19,7 +19,7 @@ extension UIView {
         self.layer.masksToBounds = false
         self.layer.cornerRadius = 25
         self.clipsToBounds = true
-        self.backgroundColor = UIColor(named: "primaryColor")
+        self.backgroundColor = UIColor(named: "backgroundColor")
         return self
     }
 }

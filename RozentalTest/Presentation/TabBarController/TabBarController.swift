@@ -18,7 +18,7 @@ final class TabBarController: UITabBarController {
         navigationItem.hidesBackButton = true;
         tabBar.barStyle = .default
         tabBar.barTintColor = .white
-        tabBar.tintColor = UIColor(named: "primaryColor")
+        tabBar.tintColor = UIColor(named: "backgroundColor")
         tabBar.unselectedItemTintColor = .gray
     }
 
