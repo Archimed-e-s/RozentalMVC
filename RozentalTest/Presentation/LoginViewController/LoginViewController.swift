@@ -57,6 +57,7 @@ final class LoginViewController: UIViewController {
     }()
 
     
+    
     // MARK: - Life Cycle
 
     override func viewDidLoad() {
@@ -65,10 +66,19 @@ final class LoginViewController: UIViewController {
         navigationItem.rightBarButtonItem = rightNavigationBarButton
         let customBarButton = UIBarButtonItem(customView: leftNavigationBarButton)
         navigationItem.leftBarButtonItem = customBarButton
+        let hideKeyboardGesture = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
+        hideKeyboardGesture.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(hideKeyboardGesture)
+        self.view.endEditing(true)
         addSubviews()
         setConstraints()
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        loginTextField.becomeFirstResponder()
+    }
+    
     // MARK: - Private Methods
 
     private func addSubviews() {

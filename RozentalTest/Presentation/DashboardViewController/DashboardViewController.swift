@@ -4,7 +4,7 @@ final class DashboardViewController: UIViewController {
     
     // MARK: - Private properties
     
-    private var gestureRecognizer = UITapGestureRecognizer()
+    private let gestureRecognizer = UITapGestureRecognizer()
 
     // MARK: - Header
 
