@@ -3,9 +3,9 @@ import UIKit
 final class LoginViewController: UIViewController {
 
     // MARK: - Private properties
-    
+
     private let networkService = NetworkService.shared
-    
+
     private lazy var leftNavigationBarButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -24,7 +24,7 @@ final class LoginViewController: UIViewController {
         button.tintColor = .darkGray
         return button
     }()
-    
+
     private lazy var entryLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -44,7 +44,7 @@ final class LoginViewController: UIViewController {
         let textField = UITextField()
         return textField.createSecureTextField()
     }()
-    
+
     private lazy var sendPostRequestButton: UIButton = {
         let button = UIButton()
         button.addTarget(self, action: #selector(sendButtonDidTap), for: .touchUpInside)
@@ -76,7 +76,7 @@ final class LoginViewController: UIViewController {
         super.viewDidAppear(animated)
         loginTextField.becomeFirstResponder()
     }
-    
+
     // MARK: - Private Methods
 
     private func addSubviews() {
@@ -88,12 +88,12 @@ final class LoginViewController: UIViewController {
             sendPostRequestButton,
         ].forEach{ view.addSubview($0) }
     }
-    
+
     private func setConstraints() {
         NSLayoutConstraint.activate([
             leftNavigationBarButton.widthAnchor.constraint(equalToConstant: Constants.leftNavigationBarButtonFrame),
             leftNavigationBarButton.heightAnchor.constraint(equalToConstant: Constants.leftNavigationBarButtonFrame),
-            
+
             entryLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
             entryLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             entryLabel.widthAnchor.constraint(equalToConstant: 200),
@@ -101,21 +101,21 @@ final class LoginViewController: UIViewController {
 
             loginTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             loginTextField.centerYAnchor.constraint(equalTo: entryLabel.bottomAnchor, constant: 50),
-            loginTextField.widthAnchor.constraint(equalToConstant: Constants.widthButton),
-            loginTextField.heightAnchor.constraint(equalToConstant: Constants.heightButton),
-            
+            loginTextField.widthAnchor.constraint(equalToConstant: Constants.widthTextField),
+            loginTextField.heightAnchor.constraint(equalToConstant: Constants.heightTextField),
+
             passwordTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             passwordTextField.centerYAnchor.constraint(equalTo: loginTextField.bottomAnchor, constant: 50),
-            passwordTextField.widthAnchor.constraint(equalToConstant: Constants.widthButton),
-            passwordTextField.heightAnchor.constraint(equalToConstant: Constants.heightButton),
-            
+            passwordTextField.widthAnchor.constraint(equalToConstant: Constants.widthTextField),
+            passwordTextField.heightAnchor.constraint(equalToConstant: Constants.heightTextField),
+
             sendPostRequestButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             sendPostRequestButton.centerYAnchor.constraint(equalTo: passwordTextField.centerYAnchor, constant: 80),
-            sendPostRequestButton.widthAnchor.constraint(equalToConstant: Constants.widthButton),
-            sendPostRequestButton.heightAnchor.constraint(equalToConstant: Constants.heightButton)
+            sendPostRequestButton.widthAnchor.constraint(equalToConstant: Constants.widthTextField),
+            sendPostRequestButton.heightAnchor.constraint(equalToConstant: Constants.heightTextField)
         ])
     }
-    
+
     @objc private func sendButtonDidTap() {
         networkService.generateAuthRequest(
             expecting: AuthorizationDataModel.self,
@@ -143,11 +143,11 @@ final class LoginViewController: UIViewController {
             }
         }
     }
-    
+
     @objc private func backToWelcomeScreen() {
         navigationController?.popToRootViewController(animated: true)
     }
-    
+
     @objc private func forgotPasswordDidTap() {
         navigationController?.popToRootViewController(animated: true)
     }

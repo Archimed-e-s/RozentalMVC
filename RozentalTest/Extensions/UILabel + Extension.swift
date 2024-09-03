@@ -13,7 +13,7 @@ extension UILabel {
         self.adjustsFontSizeToFitWidth = true
         return self
     }
-    
+
     func createSecondaryLabel(text: String, fontName: String, fontSize: CGFloat, _ textColor: UIColor?) -> UILabel {
         self.translatesAutoresizingMaskIntoConstraints = false
         self.sizeToFit()
@@ -26,7 +26,7 @@ extension UILabel {
         self.textColor? = textColor ?? .lightGray
         return self
     }
-    
+
     func createCounterLabel(countWithPoint: String) -> NSAttributedString {
         self.translatesAutoresizingMaskIntoConstraints = false
         self.numberOfLines = 1

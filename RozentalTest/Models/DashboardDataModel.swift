@@ -29,7 +29,7 @@ struct CustomerDashboard: Codable {
     var banners: [Banners]
     var services: [Services]
     var navbar: [Navbar]
-    
+
     private enum CodingKeys: String, CodingKey {
         case date, notifications
         case menuItems = "menu_items"
@@ -48,7 +48,7 @@ struct MenuItems: Codable {
     var arrear: String?
     var amountCoins: Int?
     var expected: Expected?
-    
+
     private enum CodingKeys: String, CodingKey {
         case action, name, description, arrear
         case amountCoins = "amount_coins"
@@ -59,7 +59,7 @@ struct MenuItems: Codable {
 struct Expected: Codable {
     var lastDate: String?
     var indications: [Indications]?
-    
+
     private enum CodingKeys: String, CodingKey {
         case lastDate = "last_date"
     }
@@ -70,7 +70,7 @@ struct Indications: Codable {
     var label: String?
     var lastTransfer: String?
     var expected: Bool?
-    
+
     private enum CodingKeys: String, CodingKey {
         case lastTransfer = "last_transfer"
     }

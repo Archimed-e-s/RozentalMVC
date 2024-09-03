@@ -1,7 +1,7 @@
 import UIKit
 
 final class WelcomeViewController: UIViewController {
-    
+
     // MARK: - Private properties
 
     private lazy var welcomeLabel: UILabel = {
@@ -14,7 +14,7 @@ final class WelcomeViewController: UIViewController {
         label.textAlignment = .left
         return label
     }()
-    
+
     private lazy var letsWorkLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -24,7 +24,7 @@ final class WelcomeViewController: UIViewController {
         label.textAlignment = .left
         return label
     }()
-    
+
     private lazy var loginButton: UIButton = {
         let button = UIButton(type: .system)
         button.addTarget(self, action: #selector(loginButtonDidTap), for: .touchUpInside)
@@ -34,7 +34,7 @@ final class WelcomeViewController: UIViewController {
             setTitleColor: .darkGray,
             borderWidth: 0)
     }()
-    
+
     private lazy var registrationButton: UIButton = {
         let button = UIButton(type: .system)
         return button.createCustomButton(
@@ -44,7 +44,7 @@ final class WelcomeViewController: UIViewController {
             borderWidth: 1
         )
     }()
-    
+
     private lazy var inviteButton: UIView = {
         let button = UIButton(type: .system)
         return button.createCustomClearButton(
@@ -53,7 +53,7 @@ final class WelcomeViewController: UIViewController {
             setTitleColor:  UIColor(named: "primaryColor")
         )
     }()
-    
+
     // MARK: - Life Cycle
 
     override func viewDidLoad() {
@@ -72,7 +72,6 @@ final class WelcomeViewController: UIViewController {
             loginButton,
             registrationButton,
             inviteButton
-
         ].forEach{ view.addSubview($0) }
     }
 
@@ -82,29 +81,29 @@ final class WelcomeViewController: UIViewController {
             welcomeLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 12),
             welcomeLabel.widthAnchor.constraint(equalToConstant: 290),
             welcomeLabel.heightAnchor.constraint(equalToConstant: 90),
-            
+
             letsWorkLabel.topAnchor.constraint(equalTo: welcomeLabel.bottomAnchor, constant: 30),
             letsWorkLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 12),
             letsWorkLabel.widthAnchor.constraint(equalToConstant: 320),
             letsWorkLabel.heightAnchor.constraint(equalToConstant: 15),
-            
+
             loginButton.topAnchor.constraint(equalTo: letsWorkLabel.bottomAnchor, constant: 32),
             loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             loginButton.widthAnchor.constraint(equalToConstant: Constants.widthButton),
             loginButton.heightAnchor.constraint(equalToConstant: Constants.heightButton),
-            
+
             registrationButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 16),
             registrationButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             registrationButton.widthAnchor.constraint(equalToConstant: Constants.widthButton),
             registrationButton.heightAnchor.constraint(equalToConstant: Constants.heightButton),
-            
+
             inviteButton.topAnchor.constraint(equalTo: registrationButton.bottomAnchor, constant: 16),
             inviteButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             inviteButton.widthAnchor.constraint(equalToConstant: Constants.widthButton),
             inviteButton.heightAnchor.constraint(equalToConstant: Constants.heightButton),
         ])
     }
-    
+
     @objc private func loginButtonDidTap() {
         let loginViewController = LoginViewController()
         navigationController?.pushViewController(loginViewController, animated: true)

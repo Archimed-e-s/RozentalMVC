@@ -11,7 +11,7 @@ extension UITextField {
         self.leftViewMode = .always
         self.layer.masksToBounds = true
         switch padding {
-            
+
         case .left(let spacing):
             let leftPaddingView = UIView(frame: CGRect(x: 0, y: 0, width: spacing, height: self.frame.height))
             let imageView = UIImageView(image: UIImage(systemName: image))
@@ -19,7 +19,7 @@ extension UITextField {
             imageView.frame = CGRectMake(10, -10 , 20, 20)
             self.leftView = leftPaddingView
             self.leftViewMode = .always
-            
+
         case .right(let spacing):
             let rightPaddingView = UIView(frame: CGRect(x: 0, y: 0, width: spacing, height: self.frame.height))
             let imageView = UIImageView(image: UIImage(systemName: image))
@@ -28,7 +28,7 @@ extension UITextField {
             rightPaddingView.addSubview(imageView)
             self.rightView = rightPaddingView
             self.rightViewMode = .always
-            
+
         case .equalSpacing(let spacing):
             let equalPaddingView = UIView(frame: CGRect(x: 0, y: 0, width: spacing, height: self.frame.height))
             let imageView = UIImageView(image: UIImage(systemName: image))
@@ -41,19 +41,18 @@ extension UITextField {
             self.rightViewMode = .always
         }
     }
-    
+
     func createLoginTextField() -> UITextField {
         self.translatesAutoresizingMaskIntoConstraints = false
         self.addPadding(padding: .left(40), for: "at")
         self.placeholder = "E-mail"
         self.tintColor = .gray
         self.layer.masksToBounds = false
-        self.layer.cornerRadius = Constants.cornerRadiusButton
+        self.layer.cornerRadius = Constants.cornerRadiusTextField
         self.layer.borderWidth = 1
         self.layer.borderColor = UIColor.lightGray.cgColor
         return self
     }
-    
 
     func createSecureTextField() -> UITextField {
         self.translatesAutoresizingMaskIntoConstraints = false
@@ -67,13 +66,13 @@ extension UITextField {
         self.rightView = button
         self.rightViewMode = .always
         self.layer.masksToBounds = true
-        self.layer.cornerRadius = Constants.cornerRadiusButton
+        self.layer.cornerRadius = Constants.cornerRadiusTextField
         self.layer.borderWidth = 1
         self.layer.borderColor = UIColor.lightGray.cgColor
         self.isSecureTextEntry = true
         return self
     }
-    
+
     @objc fileprivate func setPasswordToggleImage(_ button: UIButton, iSecureTextEntry: Bool, sender: AnyObject) {
         if isSecureTextEntry {
             isSecureTextEntry.toggle()

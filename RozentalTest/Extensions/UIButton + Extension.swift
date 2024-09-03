@@ -14,7 +14,7 @@ extension UIButton {
         self.backgroundColor = backgroundColor
         return self
     }
-    
+
     func createCustomClearButton(setTitle: String, backgroundColor: UIColor!, setTitleColor: UIColor!) -> UIButton {
         self.translatesAutoresizingMaskIntoConstraints = false
         self.setImage(UIImage(named: "homeIcon")?.withRenderingMode(.alwaysTemplate), for: .normal)

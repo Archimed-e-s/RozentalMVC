@@ -30,11 +30,12 @@ class DashboardCollectionViewCell: UICollectionViewCell {
         setConstraints()
         contentView.backgroundColor = .white
         contentView.layer.masksToBounds = false
-        contentView.layer.cornerRadius = Constants.cornerRadiusButton
+        contentView.layer.cornerRadius = Constants.collectionViewCellCornerRadius
         contentView.layer.shadowColor = UIColor.black.cgColor
         contentView.layer.shadowOffset = CGSize(width: 0, height: 0)
         contentView.layer.shadowRadius = 5.0
         contentView.layer.shadowOpacity = 0.1
+        contentView.clipsToBounds = false
     }
     
     required init?(coder: NSCoder) {

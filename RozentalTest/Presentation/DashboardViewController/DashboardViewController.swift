@@ -18,6 +18,7 @@ final class DashboardViewController: UIViewController {
         return label.createPriamryLabel(text: "Unknown Name", fontName: "Arial-BoldMT", fontSize: 32, .white)
     }()
 
+    // Address view
     private lazy var addressLabel: UILabel = {
         let label = UILabel()
         return label.createPriamryLabel(text: "Unknown address", fontName: "Arial", fontSize: 14, .white)
@@ -32,6 +33,7 @@ final class DashboardViewController: UIViewController {
         return image
     }()
 
+    // Notification View
     private lazy var notificationsContentView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -76,6 +78,7 @@ final class DashboardViewController: UIViewController {
         return view
     }()
 
+    // Nowaday view
     private lazy var nowadayLabel: UILabel = {
         let label = UILabel()
         return label.createPriamryLabel(text: "Сегодня", fontName: "Arial-BoldMT", fontSize: 24, nil)
@@ -86,6 +89,7 @@ final class DashboardViewController: UIViewController {
         return label.createSecondaryLabel(text: "1 января", fontName: "Arial-BoldMT", fontSize: 24, nil)
     }()
 
+    // Menu items notifications view
     private lazy var counterNotificationsView: UIView = {
         let view = UIView()
         return view.createBasicView(cornerRadius: 10)
@@ -106,6 +110,7 @@ final class DashboardViewController: UIViewController {
         return view
     }()
 
+    // Payment view
     private lazy var paymentItemsView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -137,7 +142,8 @@ final class DashboardViewController: UIViewController {
         let label = UILabel()
         return label
     }()
-
+    
+    // Meters view
     private lazy var metersItemsView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -179,7 +185,7 @@ final class DashboardViewController: UIViewController {
 
     private lazy var bannersCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.minimumLineSpacing = 25
+        layout.minimumLineSpacing = Constants.collectionCellMinimumLineSpacing
         layout.minimumInteritemSpacing = 0
         layout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -301,7 +307,7 @@ final class DashboardViewController: UIViewController {
         super.viewWillDisappear(animated)
         self.navigationController?.navigationBar.isHidden = false
     }
-    
+
     // MARK: - Private Methods
 
     private func addSubviews() {
@@ -381,190 +387,192 @@ final class DashboardViewController: UIViewController {
 
     private func setConstraints() {
         NSLayoutConstraint.activate([
+
             // Header
             profilePhoto.topAnchor.constraint(equalTo: view.topAnchor, constant: 77),
             profilePhoto.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             profilePhoto.widthAnchor.constraint(equalToConstant: Constants.avatarImageFrameSize),
             profilePhoto.heightAnchor.constraint(equalToConstant: Constants.avatarImageFrameSize),
-            
+
             nameLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 77),
             nameLabel.leadingAnchor.constraint(equalTo: profilePhoto.trailingAnchor, constant: 20),
             nameLabel.heightAnchor.constraint(equalToConstant: 30),
-            
+
             addressLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 14),
             addressLabel.leadingAnchor.constraint(equalTo: profilePhoto.trailingAnchor, constant: 20),
-            addressLabel.widthAnchor.constraint(equalToConstant: 220),
             addressLabel.heightAnchor.constraint(equalToConstant: 14),
-            
+
             notificationsContentView.topAnchor.constraint(equalTo: view.topAnchor, constant: 77),
             notificationsContentView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             notificationsContentView.widthAnchor.constraint(equalToConstant: 27),
             notificationsContentView.heightAnchor.constraint(equalToConstant: 30),
-            
+
             notificationBellImage.topAnchor.constraint(equalTo: notificationsContentView.topAnchor),
             notificationBellImage.leadingAnchor.constraint(equalTo: notificationsContentView.leadingAnchor),
             notificationBellImage.trailingAnchor.constraint(equalTo: notificationsContentView.trailingAnchor),
             notificationBellImage.bottomAnchor.constraint(equalTo: notificationsContentView.bottomAnchor),
-            
+
             notificationCounterAreaView.topAnchor.constraint(equalTo: notificationsContentView.topAnchor, constant: -5),
             notificationCounterAreaView.trailingAnchor.constraint(equalTo: notificationsContentView.trailingAnchor, constant: 4),
             notificationCounterAreaView.widthAnchor.constraint(equalToConstant: 19),
             notificationCounterAreaView.heightAnchor.constraint(equalToConstant: 19),
-            
+
             notificationCounterLabel.centerXAnchor.constraint(equalTo: notificationCounterAreaView.centerXAnchor),
             notificationCounterLabel.centerYAnchor.constraint(equalTo: notificationCounterAreaView.centerYAnchor),
-            
+
             arrowDownView.centerYAnchor.constraint(equalTo: addressLabel.centerYAnchor),
             arrowDownView.leadingAnchor.constraint(equalTo: addressLabel.trailingAnchor),
             arrowDownView.widthAnchor.constraint(equalToConstant: 15),
             arrowDownView.heightAnchor.constraint(equalToConstant: 12),
-            
+
             // MainView
             mainView.topAnchor.constraint(equalTo: view.topAnchor, constant: 170),
             mainView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             mainView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             mainView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            
+
             nowadayLabel.topAnchor.constraint(equalTo: mainView.topAnchor, constant: 30),
             nowadayLabel.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: 20),
             nowadayLabel.heightAnchor.constraint(equalToConstant: 26),
-            
+
             nowadayLabelCount.topAnchor.constraint(equalTo: mainView.topAnchor, constant: 30),
             nowadayLabelCount.leadingAnchor.constraint(equalTo: nowadayLabel.trailingAnchor, constant: 10),
             nowadayLabelCount.heightAnchor.constraint(equalToConstant: 26),
-            
+
             counterNotificationsView.topAnchor.constraint(equalTo: nowadayLabel.bottomAnchor, constant: 15),
             counterNotificationsView.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: 20),
             counterNotificationsView.trailingAnchor.constraint(equalTo: mainView.trailingAnchor, constant: -20),
             counterNotificationsView.heightAnchor.constraint(equalToConstant: Constants.basicImageViewFrameSize),
-            
+
             countNotificationsLabel.centerYAnchor.constraint(equalTo: counterNotificationsView.centerYAnchor),
             countNotificationsLabel.leadingAnchor.constraint(equalTo: counterNotificationsView.leadingAnchor, constant: 8),
             countNotificationsLabel.heightAnchor.constraint(equalToConstant: 18),
-            
+
             isReadedNotificationsView.centerYAnchor.constraint(equalTo: counterNotificationsView.centerYAnchor),
             isReadedNotificationsView.trailingAnchor.constraint(equalTo: counterNotificationsView.trailingAnchor, constant: -8),
             isReadedNotificationsView.heightAnchor.constraint(equalToConstant: 7),
             isReadedNotificationsView.widthAnchor.constraint(equalToConstant: 7),
-            
+
+            // Payment view
             paymentItemsView.topAnchor.constraint(equalTo: counterNotificationsView.bottomAnchor, constant: 25),
             paymentItemsView.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: 20),
             paymentItemsView.trailingAnchor.constraint(equalTo: mainView.trailingAnchor, constant: -20),
             paymentItemsView.heightAnchor.constraint(equalToConstant: Constants.itemViewHeightSize),
-            
+
             paymentView.leadingAnchor.constraint(equalTo: paymentItemsView.leadingAnchor),
             paymentView.heightAnchor.constraint(equalToConstant: Constants.basicImageViewFrameSize),
             paymentView.widthAnchor.constraint(equalToConstant: Constants.basicImageViewFrameSize),
             paymentView.centerYAnchor.constraint(equalTo: paymentItemsView.centerYAnchor),
-            
+
             paymentImage.centerXAnchor.constraint(equalTo: paymentView.centerXAnchor),
             paymentImage.centerYAnchor.constraint(equalTo: paymentView.centerYAnchor),
             paymentImage.heightAnchor.constraint(equalToConstant: Constants.basicImageFrameSize),
             paymentImage.widthAnchor.constraint(equalToConstant: Constants.basicImageFrameSize),
-            
+
             paymentLabel.leadingAnchor.constraint(equalTo: paymentView.trailingAnchor, constant: 10),
             paymentLabel.topAnchor.constraint(equalTo: paymentItemsView.topAnchor, constant: 10),
             paymentLabel.heightAnchor.constraint(equalToConstant: 16),
-            
+
             descriptionPaymentLabel.leadingAnchor.constraint(equalTo: paymentView.trailingAnchor, constant: 10),
             descriptionPaymentLabel.bottomAnchor.constraint(equalTo: paymentItemsView.bottomAnchor, constant: -10),
             descriptionPaymentLabel.heightAnchor.constraint(equalToConstant: 14),
-            
+
             paymentCountLabel.centerYAnchor.constraint(equalTo: paymentItemsView.centerYAnchor),
             paymentCountLabel.trailingAnchor.constraint(equalTo: paymentItemsView.trailingAnchor),
             paymentCountLabel.heightAnchor.constraint(equalToConstant: 20),
-            
+
+            // Meters view
             metersItemsView.topAnchor.constraint(equalTo: paymentItemsView.bottomAnchor, constant: 15),
             metersItemsView.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: 20),
             metersItemsView.trailingAnchor.constraint(equalTo: mainView.trailingAnchor, constant: -20),
             metersItemsView.heightAnchor.constraint(equalToConstant: Constants.itemViewHeightSize),
-            
+
             metersView.leadingAnchor.constraint(equalTo: metersItemsView.leadingAnchor),
             metersView.heightAnchor.constraint(equalToConstant: Constants.basicImageViewFrameSize),
             metersView.widthAnchor.constraint(equalToConstant: Constants.basicImageViewFrameSize),
             metersView.centerYAnchor.constraint(equalTo: metersItemsView.centerYAnchor),
-            
+
             metersImage.centerXAnchor.constraint(equalTo: metersView.centerXAnchor),
             metersImage.centerYAnchor.constraint(equalTo: metersView.centerYAnchor),
             metersImage.heightAnchor.constraint(equalToConstant: Constants.basicImageFrameSize),
             metersImage.widthAnchor.constraint(equalToConstant: Constants.basicImageFrameSize),
-            
+
             metersLabel.leadingAnchor.constraint(equalTo: metersView.trailingAnchor, constant: 10),
             metersLabel.topAnchor.constraint(equalTo: metersItemsView.topAnchor, constant: 10),
             metersLabel.heightAnchor.constraint(equalToConstant: 16),
-            
+
             descriptionMetersLabel.leadingAnchor.constraint(equalTo: metersView.trailingAnchor, constant: 10),
             descriptionMetersLabel.bottomAnchor.constraint(equalTo: metersItemsView.bottomAnchor, constant: -10),
             descriptionMetersLabel.heightAnchor.constraint(equalToConstant: 14),
-            
+
             expectedMetersIndicatorImage.topAnchor.constraint(equalTo: metersItemsView.topAnchor, constant: 10),
             expectedMetersIndicatorImage.trailingAnchor.constraint(equalTo: metersItemsView.trailingAnchor, constant: -10),
             expectedMetersIndicatorImage.widthAnchor.constraint(equalToConstant: Constants.meterIndicatorHeightSize),
             expectedMetersIndicatorImage.heightAnchor.constraint(equalToConstant: Constants.meterIndicatorHeightSize),
-            
+
             // UICollectionView
             bannersCollectionView.topAnchor.constraint(equalTo: metersItemsView.bottomAnchor, constant: 20),
             bannersCollectionView.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: 20),
             bannersCollectionView.trailingAnchor.constraint(equalTo: mainView.trailingAnchor, constant: -20),
             bannersCollectionView.heightAnchor.constraint(equalToConstant:80),
-            
+
             // first service
             firstServiceItemsView.topAnchor.constraint(equalTo: bannersCollectionView.bottomAnchor, constant: 20),
             firstServiceItemsView.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: 20),
             firstServiceItemsView.widthAnchor.constraint(equalToConstant: Constants.serviceViewWidth),
             firstServiceItemsView.heightAnchor.constraint(equalToConstant: Constants.serviceViewHeight),
-            
+
             firstServiceImageContainerView.centerYAnchor.constraint(equalTo: firstServiceItemsView.centerYAnchor, constant: Constants.serviceImageContainerViewOffset),
             firstServiceImageContainerView.centerXAnchor.constraint(equalTo: firstServiceItemsView.centerXAnchor),
             firstServiceImageContainerView.widthAnchor.constraint(equalToConstant: Constants.serviceImageContainerViewFrame),
             firstServiceImageContainerView.heightAnchor.constraint(equalToConstant: Constants.serviceImageContainerViewFrame),
-            
+
             firstServiceImage.centerXAnchor.constraint(equalTo: firstServiceImageContainerView.centerXAnchor),
             firstServiceImage.centerYAnchor.constraint(equalTo: firstServiceImageContainerView.centerYAnchor),
             firstServiceImage.widthAnchor.constraint(equalToConstant: Constants.serviceImageFrame),
             firstServiceImage.heightAnchor.constraint(equalToConstant: Constants.serviceImageFrame),
-            
+
             firstServiceLabel.topAnchor.constraint(equalTo: firstServiceImageContainerView.bottomAnchor, constant: Constants.serviceLabelTopAnchor),
             firstServiceLabel.centerXAnchor.constraint(equalTo: firstServiceItemsView.centerXAnchor),
-            
+
             // second service
             secondServiceItemsView.topAnchor.constraint(equalTo: bannersCollectionView.bottomAnchor, constant: 20),
             secondServiceItemsView.centerXAnchor.constraint(equalTo: mainView.centerXAnchor),
             secondServiceItemsView.widthAnchor.constraint(equalToConstant: Constants.serviceViewWidth),
             secondServiceItemsView.heightAnchor.constraint(equalToConstant: Constants.serviceViewHeight),
-            
+
             secondServiceImageContainerView.centerYAnchor.constraint(equalTo: secondServiceItemsView.centerYAnchor, constant: Constants.serviceImageContainerViewOffset),
             secondServiceImageContainerView.centerXAnchor.constraint(equalTo: secondServiceItemsView.centerXAnchor),
             secondServiceImageContainerView.widthAnchor.constraint(equalToConstant: Constants.serviceImageContainerViewFrame),
             secondServiceImageContainerView.heightAnchor.constraint(equalToConstant: Constants.serviceImageContainerViewFrame),
-            
+
             secondServiceImage.centerXAnchor.constraint(equalTo: secondServiceImageContainerView.centerXAnchor),
             secondServiceImage.centerYAnchor.constraint(equalTo: secondServiceImageContainerView.centerYAnchor),
             secondServiceImage.widthAnchor.constraint(equalToConstant: Constants.serviceImageFrame),
             secondServiceImage.heightAnchor.constraint(equalToConstant: Constants.serviceImageFrame),
-            
+
             secondServiceLabel.topAnchor.constraint(equalTo: secondServiceImageContainerView.bottomAnchor, constant: Constants.serviceLabelTopAnchor),
             secondServiceLabel.centerXAnchor.constraint(equalTo: secondServiceItemsView.centerXAnchor),
-            
+
             // third service
             thirdServiceItemsView.topAnchor.constraint(equalTo: bannersCollectionView.bottomAnchor, constant: 20),
             thirdServiceItemsView.trailingAnchor.constraint(equalTo: mainView.trailingAnchor, constant: -20),
             thirdServiceItemsView.widthAnchor.constraint(equalToConstant: Constants.serviceViewWidth),
             thirdServiceItemsView.heightAnchor.constraint(equalToConstant: Constants.serviceViewHeight),
-            
+
             thirdServiceImageContainerView.centerYAnchor.constraint(equalTo: thirdServiceItemsView.centerYAnchor, constant: Constants.serviceImageContainerViewOffset),
             thirdServiceImageContainerView.centerXAnchor.constraint(equalTo: thirdServiceItemsView.centerXAnchor),
             thirdServiceImageContainerView.widthAnchor.constraint(equalToConstant: Constants.serviceImageContainerViewFrame),
             thirdServiceImageContainerView.heightAnchor.constraint(equalToConstant: Constants.serviceImageContainerViewFrame),
-            
+
             thirdServiceImage.centerXAnchor.constraint(equalTo: thirdServiceImageContainerView.centerXAnchor),
             thirdServiceImage.centerYAnchor.constraint(equalTo: thirdServiceImageContainerView.centerYAnchor),
             thirdServiceImage.widthAnchor.constraint(equalToConstant: Constants.serviceImageFrame),
             thirdServiceImage.heightAnchor.constraint(equalToConstant: Constants.serviceImageFrame),
-            
+
             thirdServiceLabel.topAnchor.constraint(equalTo: thirdServiceImageContainerView.bottomAnchor, constant: Constants.serviceLabelTopAnchor),
             thirdServiceLabel.centerXAnchor.constraint(equalTo: thirdServiceItemsView.centerXAnchor),
-            
+
             // All services button
             showAllServicesButton.topAnchor.constraint(equalTo: thirdServiceItemsView.bottomAnchor, constant: 20),
             showAllServicesButton.centerXAnchor.constraint(equalTo: mainView.centerXAnchor),
@@ -572,7 +580,7 @@ final class DashboardViewController: UIViewController {
             showAllServicesButton.heightAnchor.constraint(equalToConstant: Constants.heightButton),
         ])
     }
-    
+
     private func fetchData() {
         networkService.generateDashboardRequest(expecting: DashboardDataModel.self) { result in
             switch result {
@@ -608,7 +616,7 @@ final class DashboardViewController: UIViewController {
             }
         }
     }
-    
+
     private func fetchImage(url: URL, image: UIImageView) {
         URLSession.shared.dataTask(with: url) { data, _, _ in
               guard let imageData = data else { return }
@@ -617,7 +625,7 @@ final class DashboardViewController: UIViewController {
               }
         }.resume()
     }
-    
+
     @objc private func pushTasksViewController() {
         let taskViewController = TasksViewController()
         navigationController?.present(taskViewController, animated: true)
@@ -630,7 +638,7 @@ extension DashboardViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         bannersModel.count
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCell", for: indexPath) as? DashboardCollectionViewCell else
         { return UICollectionViewCell.init() }
@@ -651,8 +659,8 @@ extension DashboardViewController: UICollectionViewDataSource {
 
 extension DashboardViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let height = collectionView.frame.height
-        let width = collectionView.frame.width - 30
+        let height = collectionView.frame.height - 10
+        let width = collectionView.frame.width - 45
         return CGSize(width: width, height: height)
     }
 }

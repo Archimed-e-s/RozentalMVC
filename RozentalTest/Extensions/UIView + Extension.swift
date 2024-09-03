@@ -1,6 +1,7 @@
 import UIKit
 
 extension UIView {
+
     func createBasicView(cornerRadius: CGFloat) -> UIView {
         self.translatesAutoresizingMaskIntoConstraints = false
         self.backgroundColor = .white

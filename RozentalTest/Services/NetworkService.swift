@@ -10,12 +10,13 @@ final class NetworkService {
 
     static let shared = NetworkService()
     private init() {}
-    
+
     private let boundary = "Boundary-\(UUID().uuidString)"
     private let lineBreak = "\r\n"
     private var body = Data()
     private let url = URL(string: "https://test.rozentalgroup.ru/version2/entry.php")!
-    
+
+    ///Create a multipart body to add to the Auth request
     public func setAuthFields(login: String, password: String) -> Data {
         body.append("--\(boundary + lineBreak)")
         body.append("Content-Disposition:form-data; name=\"service[0][name]\"")
@@ -34,7 +35,8 @@ final class NetworkService {
         body.append("--\(boundary)--\(lineBreak)")
         return body
     }
-    
+
+    ///Create a multipart body to add to the Dashboard request
     public func setDashboardFields() -> Data {
         body.append("--\(boundary + lineBreak)")
         body.append("Content-Disposition:form-data; name=\"service[0][name]\"")
@@ -51,8 +53,7 @@ final class NetworkService {
         return body
     }
 
-    // MARK: - MOK DATA: login = "test_user", password = "123456aB"
-    
+    ///request execution Auth function
     public func generateAuthRequest<T: Codable>(
         expecting type: T.Type,
         login: String,
@@ -80,7 +81,8 @@ final class NetworkService {
             }
         }.resume()
     }
-    
+
+    ///request execution Dashborad function
     public func generateDashboardRequest<T: Codable>(
         expecting type: T.Type,
         completion: @escaping (Result<T, Error>) -> Void

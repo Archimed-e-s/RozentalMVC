@@ -1,16 +1,14 @@
 import UIKit
 
 final class TabBarController: UITabBarController {
-    
+
     // MARK: - Private properties
-    
+
     private let homeViewController = DashboardViewController()
     private let tasksViewController = TasksViewController()
     private let serviceViewController = ServiceViewController()
     private let chatViewController = ChatViewController()
     private let contactViewController = ContactViewController()
-    
-
 
     // MARK: - Life Cycle
 
@@ -23,9 +21,9 @@ final class TabBarController: UITabBarController {
         tabBar.tintColor = UIColor(named: "primaryColor")
         tabBar.unselectedItemTintColor = .gray
     }
-    
+
     // MARK: - Private Methods
-    
+
     fileprivate func setupTabs() {
         setViewControllers([
             homeViewController,
@@ -35,6 +33,7 @@ final class TabBarController: UITabBarController {
             contactViewController
         ], animated: true)
     }
+
     private func setupTabBarControllers(){
         homeViewController.tabBarItem.image = UIImage(systemName: "key.horizontal.fill")
         homeViewController.tabBarItem.title = "Главная"
