@@ -1,9 +1,9 @@
 import UIKit
 
 final class DashboardViewController: UIViewController {
-    
+
     // MARK: - Private properties
-    
+
     private let gestureRecognizer = UITapGestureRecognizer()
 
     // MARK: - Header
@@ -12,7 +12,7 @@ final class DashboardViewController: UIViewController {
         let image = UIImageView()
         return image.createImageInsideContainer(imageName: "person.circle", cornerRadius: Constants.avatarImageFrameSize)
     }()
-    
+
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
         return label.createPriamryLabel(text: "Unknown Name", fontName: "Arial-BoldMT", fontSize: 32, .white)
@@ -22,7 +22,7 @@ final class DashboardViewController: UIViewController {
         let label = UILabel()
         return label.createPriamryLabel(text: "Unknown address", fontName: "Arial", fontSize: 14, .white)
     }()
-    
+
     private lazy var arrowDownView: UIImageView = {
         let image = UIImageView(image: UIImage(systemName: "chevron.down")?.withRenderingMode(.alwaysTemplate))
         image.translatesAutoresizingMaskIntoConstraints = false
@@ -31,7 +31,7 @@ final class DashboardViewController: UIViewController {
         image.contentMode = .scaleAspectFill
         return image
     }()
-    
+
     private lazy var notificationsContentView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -40,7 +40,7 @@ final class DashboardViewController: UIViewController {
         gestureRecognizer.addTarget(self, action: #selector(pushTasksViewController))
         return view
     }()
-    
+
     private lazy var notificationBellImage: UIImageView = {
         let image = UIImageView(image: UIImage(systemName: "bell")?.withRenderingMode(.alwaysTemplate))
         image.translatesAutoresizingMaskIntoConstraints = false
@@ -48,6 +48,7 @@ final class DashboardViewController: UIViewController {
         image.tintColor = .white
         return image
     }()
+
     private lazy var notificationCounterAreaView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -57,13 +58,13 @@ final class DashboardViewController: UIViewController {
         view.clipsToBounds = true
         return view
     }()
-    
+
     private lazy var notificationCounterLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
         return label.createPriamryLabel(text: "0", fontName: "Arial-BoldMT", fontSize: 10, .white)
     }()
-    
+
     // MARK: - MainView
 
     private lazy var mainView: UIView = {
@@ -74,22 +75,22 @@ final class DashboardViewController: UIViewController {
         view.layer.cornerRadius = 20
         return view
     }()
-    
+
     private lazy var nowadayLabel: UILabel = {
         let label = UILabel()
         return label.createPriamryLabel(text: "Сегодня", fontName: "Arial-BoldMT", fontSize: 24, nil)
     }()
-    
+
     private lazy var nowadayLabelCount: UILabel = {
         let label = UILabel()
         return label.createSecondaryLabel(text: "1 января", fontName: "Arial-BoldMT", fontSize: 24, nil)
     }()
-    
+
     private lazy var counterNotificationsView: UIView = {
         let view = UIView()
         return view.createBasicView(cornerRadius: 10)
     }()
-    
+
     private lazy var countNotificationsLabel: UILabel = {
         let label = UILabel()
         return label.createPriamryLabel(text: "сообщения от УК", fontName: "Arial", fontSize: 18, nil)
@@ -104,66 +105,66 @@ final class DashboardViewController: UIViewController {
         view.clipsToBounds = true
         return view
     }()
-    
+
     private lazy var paymentItemsView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .white
         return view
     }()
-    
+
     private lazy var paymentView: UIView = {
         let view = UIView()
         return view.createContainerForImageView()
     }()
-    
+
     private lazy var paymentImage: UIImageView = {
         let image = UIImageView()
         return image.createImageInsideContainer(imageName: "income", cornerRadius: Constants.basicImageFrameSize)
     }()
-    
+
     private lazy var paymentLabel: UILabel = {
         let label = UILabel()
         return label.createPriamryLabel(text: "Квартплата", fontName: "Arial-BoldMT", fontSize: 16, nil)
     }()
-    
+
     private lazy var descriptionPaymentLabel: UILabel = {
         let label = UILabel()
         return label.createSecondaryLabel(text: "Оплатить", fontName: "Arial", fontSize: 14, nil)
     }()
-    
+
     private lazy var paymentCountLabel: UILabel = {
         let label = UILabel()
         return label
     }()
-    
+
     private lazy var metersItemsView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .white
         return view
     }()
-    
+
     private lazy var metersView: UIView = {
         let view = UIView()
         return view.createContainerForImageView()
     }()
-    
+
     private lazy var metersImage: UIImageView = {
         let image = UIImageView()
         return image.createImageInsideContainer(imageName: "tachometer", cornerRadius: Constants.basicImageFrameSize)
     }()
-    
+
     private lazy var metersLabel: UILabel = {
         let label = UILabel()
         return label.createPriamryLabel(text: "Показания счетчиков", fontName: "Arial-BoldMT", fontSize: 16, nil)
     }()
-    
+
     private lazy var descriptionMetersLabel: UILabel = {
         let label = UILabel()
         return label.createSecondaryLabel(text: "Отправить", fontName: "Arial", fontSize: 14, nil)
     }()
-    
+
     private lazy var expectedMetersIndicatorImage: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
@@ -173,7 +174,7 @@ final class DashboardViewController: UIViewController {
         image.backgroundColor = UIColor(named: "mainViewBackgroundColor")
         return image
     }()
-    
+
     // MARK: - Banners
 
     private lazy var bannersCollectionView: UICollectionView = {
@@ -190,7 +191,7 @@ final class DashboardViewController: UIViewController {
         collectionView.register(DashboardCollectionViewCell.self, forCellWithReuseIdentifier: "MyCell")
         return collectionView
     }()
-    
+
     // MARK: - Services
 
     // first
@@ -202,7 +203,7 @@ final class DashboardViewController: UIViewController {
         view.backgroundColor = UIColor(named: "mainViewBackgroundColor")
         return view
     }()
-    
+
     private lazy var firstServiceImageContainerView: UIView = {
         let view = UIView()
         return view.createContainerForImageView()
@@ -212,12 +213,12 @@ final class DashboardViewController: UIViewController {
         let image = UIImageView()
         return image.createImageInsideContainer(imageName: "number.circle.fill", cornerRadius: Constants.basicImageFrameSize)
     }()
-    
+
     private lazy var firstServiceLabel: UILabel = {
         let label = UILabel()
         return label.createPriamryLabel(text: "Сервис 1", fontName: "Arial-BoldMT", fontSize: 16, nil)
     }()
-    
+
     // second
     private lazy var secondServiceItemsView: UIView = {
         let view = UIView()
@@ -227,22 +228,22 @@ final class DashboardViewController: UIViewController {
         view.backgroundColor = UIColor(named: "mainViewBackgroundColor")
         return view
     }()
-    
+
     private lazy var secondServiceImageContainerView: UIView = {
         let view = UIView()
         return view.createContainerForImageView()
     }()
-    
+
     private lazy var secondServiceImage: UIImageView = {
         let image = UIImageView()
         return image.createImageInsideContainer(imageName: "doc.fill", cornerRadius: Constants.basicImageFrameSize)
     }()
-    
+
     private lazy var secondServiceLabel: UILabel = {
         let label = UILabel()
         return label.createPriamryLabel(text: "Сервис 2", fontName: "Arial-BoldMT", fontSize: 16, nil)
     }()
-    
+
     // third
     private lazy var thirdServiceItemsView: UIView = {
         let view = UIView()
@@ -252,12 +253,12 @@ final class DashboardViewController: UIViewController {
         view.backgroundColor = UIColor(named: "mainViewBackgroundColor")
         return view
     }()
-    
+
     private lazy var thirdServiceImageContainerView: UIView = {
         let view = UIView()
         return view.createContainerForImageView()
     }()
-    
+
     private lazy var thirdServiceImage: UIImageView = {
         let image = UIImageView()
         return image.createImageInsideContainer(imageName: "sun.max.fill", cornerRadius: Constants.basicImageFrameSize)
@@ -267,18 +268,18 @@ final class DashboardViewController: UIViewController {
         let label = UILabel()
         return label.createPriamryLabel(text: "Сервис 3", fontName: "Arial-BoldMT", fontSize: 16, nil)
     }()
-    
+
     // All Services Button
     private lazy var showAllServicesButton: UIButton = {
         let button = UIButton(type: .system)
         return button.createCustomButton(setTitle: "Все сервисы", backgroundColor: UIColor(named: "alertColor"), setTitleColor: .black, borderWidth: 0)
     }()
-    
+
     // MARK: - App Service and model
 
     private let networkService = NetworkService.shared
     private var bannersModel = [Banners]()
-    
+
     // MARK: - Life Cycle
 
     override func viewDidLoad() {

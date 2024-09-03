@@ -56,8 +56,6 @@ final class LoginViewController: UIViewController {
         )
     }()
 
-    
-    
     // MARK: - Life Cycle
 
     override func viewDidLoad() {
