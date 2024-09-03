@@ -50,7 +50,7 @@ final class WelcomeViewController: UIViewController {
         return button.createCustomClearButton(
             setTitle: "Пригласить управлять своим домом",
             backgroundColor: .clear,
-            setTitleColor:  UIColor(named: "primaryColor")
+            setTitleColor:  UIColor(named: "backgroundColor")
         )
     }()
 

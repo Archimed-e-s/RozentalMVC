@@ -9,7 +9,7 @@ extension UIImageView {
         self.translatesAutoresizingMaskIntoConstraints = false
         self.contentMode = .scaleAspectFit
         self.tintColor = .white
-        self.backgroundColor = UIColor(named: "primaryColor")
+        self.backgroundColor = UIColor(named: "backgroundColor")
         self.layer.masksToBounds = false
         self.layer.cornerRadius = cornerRadius / 2
         self.clipsToBounds = true
